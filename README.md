@@ -1,5 +1,5 @@
-📖 Knowledge Distillation für Textklassifikation
-🚀 Knowledge Distillation für effiziente Textklassifikation:
+📖 DistillNLP für Textklassifikation
+🚀 Distillation in natuerliche sprach verarbeitung für effiziente Textklassifikation:
 Dieses Projekt nutzt Knowledge Distillation, um ein leistungsfähiges Teacher-Modell zu trainieren und daraus ein kompaktes Student-Modell abzuleiten. Das Student-Modell ist für den Einsatz auf Edge-Geräten und für ressourcenarme Umgebungen optimiert.
 
 🔹 Features
@@ -41,7 +41,7 @@ knowledge_distillation_text/
 🚀 Installation
 1️⃣ Klonen des Repositorys
 
-git clone https://github.com/dein-benutzername/knowledge_distillation_text.git
+git clone https://github.com/Benjamin2099/DistillNLP.git
 cd knowledge_distillation_text
 2️⃣ Erstellen einer virtuellen Umgebung
 
@@ -82,22 +82,25 @@ curl -X POST "http://localhost:5000/predict" -H "Content-Type: application/json"
   "prediction": 1,
   "sentiment": "positiv"
 }
+
 🐳 Docker Deployment
 1️⃣ Erstellen des Docker-Containers
-
 docker build -t knowledge_distillation_text .
-2️⃣ Starten des Containers
 
+2️⃣ Starten des Containers
 docker run -p 5000:5000 knowledge_distillation_text
+
+
 📊 Evaluierungsmethoden
 Nach dem Training und der Distillation werden folgende Metriken zur Modellbewertung berechnet:
 
-Metrik	Beschreibung
-Accuracy	Gibt an, wie viele Vorhersagen korrekt sind.
-Precision	Misst, wie viele als positiv vorhergesagte Klassen tatsächlich positiv sind.
-Recall	Zeigt, wie viele der tatsächlichen positiven Klassen korrekt erkannt wurden.
-F1-Score	Harmonic Mean zwischen Precision & Recall.
-Confusion Matrix	Zeigt die Verteilung der Vorhersagen über die Klassen.
+Metrik	                Beschreibung
+Accuracy	              Gibt an, wie viele Vorhersagen korrekt sind.
+Precision	              Misst, wie viele als positiv vorhergesagte Klassen tatsächlich positiv sind.
+Recall	                Zeigt, wie viele der tatsächlichen positiven Klassen korrekt erkannt wurden.
+F1-Score	              Harmonic Mean zwischen Precision & Recall.
+Confusion               Matrix	Zeigt die Verteilung der Vorhersagen über die Klassen.
+
 🔥 Erweiterungen & Optimierungen
 📌 Multilinguale Unterstützung – Modelle für verschiedene Sprachen trainieren
 📌 Optimierte Modelle für Mobile & Edge-Devices – Quantisierte Student-Modelle für IoT
@@ -114,9 +117,10 @@ Erstelle einen neuen Branch (feature/neues-feature)
 Committe deine Änderungen
 Erstelle einen Pull-Request 💡
 📩 Kontakt & Support
-👤 Dein Name
-📧 dein.email@example.com
-🌍 GitHub-Projektseite
+
+👤 Benjamin
+📧 benjamin.sat2018@gmail.com
+🌍 Benjamin2099-DistillNLP
 
 📌 Fazit
 ✅ End-to-End Machine Learning Pipeline – Von Training bis API-Deployment
@@ -124,14 +128,8 @@ Erstelle einen Pull-Request 💡
 ✅ Echtzeit-API für Textklassifikation – Sentiment-Analyse in Sekundenschnelle
 ✅ Skalierbar & erweiterbar für Deep Learning – Perfekt für Edge- & Cloud-Deployment 🚀
 
-Falls du weitere Fragen hast oder Anpassungen benötigst, lass es mich wissen! 🎯🚀
-
-Hier ist der vollständige Inhalt der requirements.txt-Datei, die alle benötigten Python-Abhängigkeiten für dein Knowledge Distillation für Textklassifikation-Projekt enthält.
-
 📄 requirements.txt
-txt
-Kopieren
-Bearbeiten
+
 # PyTorch und verwandte Pakete für Deep Learning
 torch>=1.10.0
 torchvision>=0.11.0
@@ -177,6 +175,7 @@ Web-API & Flask	flask, flask-restful	Bereitstellung eines REST-API-Servers für 
 Logging & Debugging	loguru	Erweiterte Logging-Funktionalitäten für einfaches Debugging.
 Tests & Qualitätssicherung	pytest, pytest-cov	Automatische Tests für Modelltraining, Inferenz & Datenverarbeitung.
 Optimierung & Training	tqdm	Fortschrittsbalken für lange Trainingsprozesse.
+
 📌 Installation der Abhängigkeiten
 Nach dem Klonen des Repositorys kannst du die Pakete mit folgendem Befehl installieren:
 
