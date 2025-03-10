@@ -9,35 +9,6 @@ Dieses Projekt nutzt Knowledge Distillation, um ein leistungsfähiges Teacher-Mo
 ✅ REST API mit Flask – Echtzeit-Modelleinsatz für Vorhersagen
 ✅ GPU-Unterstützung – Automatische Nutzung von CUDA falls verfügbar
 
-🏗 Projektstruktur
-
-knowledge_distillation_text/
-├── README.md                          # Projektbeschreibung, Anleitung und Nutzungshinweise
-├── requirements.txt                   # Liste der benötigten Python-Pakete (Dependencies)
-├── setup.py                           # Setup-Skript zur Installation des Projekts als Python-Paket
-├── .gitignore                         # Dateien/Ordner, die Git ignorieren soll
-├── Dockerfile                         # Docker-Konfiguration für Container-Deployment
-├── config/
-│   ├── default.yaml                   # Standard-Konfiguration (Hyperparameter, Pfade, etc.)
-│   └── logging.conf                   # Logging-Konfiguration
-├── data/
-│   ├── vocab.json                     # Vokabular-Datei (Mapping von Tokens zu Indizes)
-│   ├── sample_dataset.csv             # Beispieldatensatz für Sentiment-Analyse
-├── docs/
-│   └── knowledge_distillation_text_documentation.json  # Ausführliche Projektdokumentation
-├── src/
-│   ├── __init__.py                    
-│   ├── data_preprocessing.py          # Tokenisierung, Vokabularaufbau, Padding
-│   ├── models.py                      # Definitionen von Teacher- und Student-Modellen
-│   ├── training.py                    # Trainingsfunktionen für Teacher und Student
-│   ├── evaluation.py                  # Evaluierungsmetriken (Accuracy, Precision, etc.)
-│   ├── utils.py                       # Hilfsfunktionen (Logging, Modellmanagement)
-├── tests/
-│   ├── test_data_preprocessing.py     # Unit-Tests für Datenverarbeitung
-│   ├── test_models.py                 # Tests für Modellarchitekturen
-│   ├── test_training.py               # Tests für Trainings- und Evaluierungsfunktionen
-├── distillNLP_main.py # Hauptskript für Training, Evaluierung & Distillation
-└── app.py                             # Flask-API für Echtzeit-Inferenz
 🚀 Installation
 1️⃣ Klonen des Repositorys
 
