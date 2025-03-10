@@ -1,0 +1,135 @@
+{
+  "project_name": "DistillNLP",
+  "version": "1.0",
+  "author": "Benjamin",
+  "email": "your email",
+  "repository": "https://github.com/Benjamin2099/DistillNLP",
+  "description": "DistillNLP implementiert Knowledge Distillation für die Textklassifikation, um ein kompaktes Student-Modell zu entwickeln, das die Leistungsfähigkeit eines großen Teacher-Modells übernimmt. Dadurch werden ressourcenoptimierte NLP-Modelle geschaffen, die ideal für den Einsatz auf Edge-Geräten und mobilen Plattformen sind.",
+  "sections": [
+    {
+      "heading": "1. Einleitung",
+      "content": "In einer Welt, in der leistungsstarke NLP-Modelle wie BERT oder GPT große Ressourcen benötigen, setzt DistillNLP auf Knowledge Distillation, um ein kleines, effizientes Modell zu erzeugen. Dieses Student-Modell erbt das Wissen eines komplexen Teacher-Modells, arbeitet aber mit deutlich geringeren Ressourcen, was den Einsatz in Edge- und mobilen Anwendungen ermöglicht."
+    },
+    {
+      "heading": "2. Features",
+      "content": [
+        "Effiziente Knowledge Distillation zur Komprimierung großer Modelle.",
+        "Modulare Pipeline für Datenaufbereitung, Training, Evaluierung und Inferenz.",
+        "RESTful API für Echtzeit-Textklassifikation (z. B. Sentiment-Analyse).",
+        "Unterstützung für GPU und Edge-Deployment.",
+        "Erweiterbare Architektur für zukünftige Anforderungen (z. B. Mehrsprachigkeit, erweiterte Metriken)."
+      ]
+    },
+    {
+      "heading": "3. Projektstruktur",
+      "content": {
+        "README.md": "Enthält Projektbeschreibung, Anleitung und Nutzungshinweise.",
+        "requirements.txt": "Liste der benötigten Python-Pakete.",
+        "setup.py": "Setup-Skript zur Installation des Projekts als Paket.",
+        ".gitignore": "Definiert Dateien/Ordner, die Git ignorieren soll.",
+        "Dockerfile": "Docker-Konfiguration für Container-Deployment.",
+        "config": {
+          "default.yaml": "Standard-Konfiguration (Hyperparameter, Pfade, etc.).",
+          "logging.conf": "Konfiguration für das Logging (Format, Level, Handler)."
+        },
+        "data": {
+          "vocab.json": "Mapping von Tokens zu Indizes für die Textvorverarbeitung.",
+          "sample_dataset.csv": "Beispieldatensatz für die Textklassifikation."
+        },
+        "docs": {
+          "distillnlp_documentation.json": "Ausführliche Projektdokumentation im JSON-Format."
+        },
+        "src": {
+          "data_preprocessing.py": "Module zur Tokenisierung, Vokabularaufbau, Sequenzumwandlung und Padding.",
+          "models.py": "Definitionen von Teacher- und Student-Modellen.",
+          "training.py": "Trainingsfunktionen für Teacher- und Student-Modelle sowie den Distillation-Prozess.",
+          "evaluation.py": "Evaluierungsfunktionen zur Berechnung von Accuracy, F1-Score, Konfusionsmatrix etc.",
+          "utils.py": "Hilfsfunktionen für Konfigurationsmanagement, Logging und Modell-Speicherung."
+        },
+        "tests": {
+          "test_data_preprocessing.py": "Unit-Tests für die Datenvorverarbeitung.",
+          "test_models.py": "Unit-Tests für die Modellarchitekturen.",
+          "test_training.py": "Tests für Trainings- und Evaluierungsfunktionen."
+        },
+        "distillation_edge_text_extended.py": "Hauptskript, das den gesamten Workflow integriert (Training, Evaluierung, Distillation).",
+        "app.py": "Flask-API zur Echtzeitanwendung (z. B. Sentiment-Analyse)."
+      }
+    },
+    {
+      "heading": "4. Technischer Überblick",
+      "content": {
+        "Training": {
+          "description": "Das Teacher-Modell wird zuerst auf einem umfangreichen Datensatz trainiert, um hohe Genauigkeit zu erreichen. Anschließend wird das Student-Modell mittels Knowledge Distillation trainiert, wobei es lernt, die soften Vorhersagen des Teacher-Modells nachzubilden.",
+          "steps": [
+            "Trainiere das Teacher-Modell mit klassischen Loss-Funktionen (Cross-Entropy).",
+            "Nutze das vortrainierte Teacher-Modell zur Generierung von Soft Labels.",
+            "Trainiere das Student-Modell mit einer Kombination aus KL-Divergenz und Cross-Entropy-Loss."
+          ]
+        },
+        "Evaluation": {
+          "description": "Die Modelle werden anhand von Metriken wie Accuracy, Precision, Recall, F1-Score und der Konfusionsmatrix bewertet, um deren Performance zu verifizieren.",
+          "metrics": ["accuracy", "precision", "recall", "f1_score", "confusion_matrix"]
+        },
+        "Deployment": {
+          "description": "Das Student-Modell kann in einer produktiven Umgebung via Flask-API bereitgestellt werden. Dies ermöglicht Echtzeit-Vorhersagen, z. B. für die Sentiment-Analyse.",
+          "endpoints": {
+            "/predict": "Empfängt einen Text als JSON und gibt die Klassifikation zurück."
+          }
+        }
+      }
+    },
+    {
+      "heading": "5. Installation und Nutzung",
+      "content": {
+        "Installation": [
+          "Klonen des Repositorys: git clone https://github.com/Benjamin2099/DistillNLP.git",
+          "Wechsel in das Projektverzeichnis: cd DistillNLP",
+          "Erstellen einer virtuellen Umgebung: python -m venv venv",
+          "Aktivieren der Umgebung: source venv/bin/activate (Linux/macOS) oder venv\\Scripts\\activate (Windows)",
+          "Installieren der Abhängigkeiten: pip install -r requirements.txt"
+        ],
+        "Nutzung": [
+          "Teacher-Modell trainieren: python distillation_edge_text_extended.py --mode teacher",
+          "Student-Modell mit Knowledge Distillation trainieren: python distillation_edge_text_extended.py --mode student",
+          "Evaluierung durchführen: python distillation_edge_text_extended.py --mode evaluate",
+          "API starten: python app.py"
+        ]
+      }
+    },
+    {
+      "heading": "6. API-Dokumentation",
+      "content": {
+        "Base URL": "http://localhost:5000",
+        "Endpoints": {
+          "POST /predict": {
+            "description": "Nimmt einen Text als JSON-Input und gibt die Klassifikationsvorhersage (z. B. Sentiment) zurück.",
+            "request_example": {
+              "text": "I love this movie!"
+            },
+            "response_example": {
+              "text": "I love this movie!",
+              "prediction": 1,
+              "sentiment": "positiv"
+            }
+          }
+        }
+      }
+    },
+    {
+      "heading": "7. Weiterentwicklung & Optimierungen",
+      "content": [
+        "Integration von vortrainierten Transformer-Modellen als Teacher.",
+        "Unterstützung für mehrsprachige Textklassifikation.",
+        "Erweiterte Evaluierung mit zusätzlichen Metriken wie AUC und MCC.",
+        "Optimierung des Student-Modells durch Quantisierung und Pruning.",
+        "Einsatz von Cloud- und Edge-Deployment-Lösungen."
+      ]
+    },
+    {
+      "heading": "8. Lizenz",
+      "content": "Dieses Projekt steht unter der MIT-Lizenz."
+    }
+  ]
+}
+
+

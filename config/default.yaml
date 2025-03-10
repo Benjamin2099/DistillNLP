@@ -1,0 +1,61 @@
+# Allgemeine Einstellungen
+general:
+  seed: 42                      # Zufalls-Seed für Reproduzierbarkeit
+  device: "cuda"                # "cuda" für GPU-Nutzung, "cpu" falls keine GPU verfügbar
+  save_model_dir: "models/"     # Verzeichnis, in dem trainierte Modelle gespeichert werden
+
+# Datenkonfiguration
+data:
+  dataset_path: "data/sample_dataset.csv"  # Pfad zum Datensatz (CSV-Format)
+  vocab_path: "data/vocab.json"            # Pfad zur Vokabular-Datei
+  max_sequence_length: 128                 # Maximale Länge der Eingabesequenzen (Padding)
+  batch_size: 32                           # Batch-Größe für Training und Evaluation
+  train_split: 0.8                         # Anteil der Daten, der als Trainingsset verwendet wird
+  shuffle: true                            # Zufälliges Mischen der Daten
+
+# Trainingseinstellungen
+training:
+  epochs: 10                   # Anzahl der Trainings-Epochen
+  learning_rate: 0.001         # Anfangslernrate
+  weight_decay: 0.01           # L2-Regularisierung
+  optimizer: "adam"            # Optimierer (z. B. "adam", "sgd", "rmsprop")
+  scheduler: "plateau"         # Lernraten-Scheduler ("plateau", "cosine", "step")
+  early_stopping: true         # Frühes Stoppen bei ausbleibender Verbesserung
+  early_stopping_patience: 3   # Anzahl der Epochen ohne Verbesserung bis zum Stop
+
+# Modellkonfiguration
+model:
+  teacher:
+    type: "bert-base-uncased"  # Vortrainiertes Modell, z. B. BERT
+    hidden_size: 768           # Größe der versteckten Schichten (abhängig vom Modell)
+    dropout: 0.1               # Dropout-Rate
+  student:
+    type: "lstm"               # Typ des kompakten Student-Modells ("lstm", "cnn" etc.)
+    embedding_dim: 128         # Dimension der Wort-Embeddings
+    hidden_size: 256           # Größe der versteckten Schicht im Student-Modell
+    dropout: 0.2               # Dropout-Rate im Student-Modell
+    num_classes: 2             # Anzahl der Ausgabeklassen (z. B. 0 = negativ, 1 = positiv)
+
+# Einstellungen für Knowledge Distillation
+distillation:
+  temperature: 2.0             # Temperatur zur Glättung der Softmax-Ausgabe
+  alpha: 0.7                   # Gewichtung zwischen KL-Divergenz und klassischem Cross-Entropy Loss
+  teacher_path: "models/teacher_model.pth"  # Speicherort des Teacher-Modells
+  student_path: "models/student_model.pth"  # Speicherort des Student-Modells
+
+# Evaluierungseinstellungen
+evaluation:
+  metrics: ["accuracy", "precision", "recall", "f1", "confusion_matrix"]  # Zu berechnende Metriken
+  log_results: true            # Ergebnisse nach dem Training in Logs speichern
+
+# Logging-Konfiguration
+logging:
+  log_dir: "logs"              # Verzeichnis für Log-Dateien
+  log_level: "INFO"            # Logging-Level (z. B. DEBUG, INFO, WARNING)
+  log_to_file: true            # Logs zusätzlich in eine Datei schreiben
+
+# API-Konfiguration
+api:
+  host: "0.0.0.0"              # Host-Adresse für die Flask-API
+  port: 5000                   # Port für die API
+  debug: false                 # Debug-Modus (true für Entwicklung, false für Produktion)
