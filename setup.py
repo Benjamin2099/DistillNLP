@@ -7,7 +7,6 @@ setup(
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     author="Benjamin",
-    author_email="your email",
     url="https://github.com/Benjamin2099/DistillNLP",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
